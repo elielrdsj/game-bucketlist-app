@@ -1,0 +1,14 @@
+<mat-expansion-panel hideToggle *ngIf="game" [ngStyle]="{ backgroundColor: getColor() }">
+  <mat-expansion-panel-header>
+    <mat-panel-title [ngClass]="{ 'completed' : game.played }">
+      <mat-checkbox [checked]="game.played" (change)="changeStatus()"></mat-checkbox>
+      {{ game.title }}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <ul>
+    <li *ngIf="game.synopsis"><b>Sinopse:</b> {{ game.synopsis}}</li>
+    <li><b>Estúdio: </b> {{ game.studio }}</li>
+    <li><b>Data de Lançamento:</b> {{ game.releaseDate }}</li>
+    <li><b>Já joguei? </b> <b *ngIf="game.played;else elseBlock"></b></li><ng-template #elseBlock>Não</ng-template>
+  </ul>
+</mat-expansion-panel>
